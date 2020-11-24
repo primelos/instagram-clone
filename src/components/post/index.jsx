@@ -1,13 +1,27 @@
+import { Avatar } from '@material-ui/core';
 import React from 'react'
+import './post.css'
 
-const Post = () => {
+const Post = ({ username, caption, imgUrl }) => {
+    
     return (
-        <div>
-            <h3>Username</h3>
-            <img src="https://www.freecodecamp.org/news" alt=""/>
-            <h4>Usernam: caption</h4>
-        </div>
-    )
+      <div className='post'>
+          <div className="post__header">
+            <Avatar 
+                className='post__avatar'
+                alt={username}
+                src='/static/images/avatar/1.jpg'
+            />
+            <h3>{username}</h3>
+          </div>
+        <img
+            className='post__image'
+          src={imgUrl}
+          alt=""
+        />
+        <h4 className='post__text'><strong>{username}</strong> {caption}</h4>
+      </div>
+    );
 }
 
 export default Post
