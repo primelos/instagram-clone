@@ -2,8 +2,8 @@ import { Avatar } from '@material-ui/core';
 import React from 'react'
 import './post.css'
 
-const Post = ({ username, caption, imgUrl }) => {
-    
+const Post = ({ username, caption, imageUrl }) => {
+    console.log(imageUrl)
     return (
       <div className='post'>
           <div className="post__header">
@@ -16,8 +16,8 @@ const Post = ({ username, caption, imgUrl }) => {
           </div>
         <img
             className='post__image'
-          src={imgUrl}
-          alt=""
+          src={imageUrl}
+          alt="react pic"
         />
         <h4 className='post__text'><strong>{username}</strong> {caption}</h4>
       </div>
