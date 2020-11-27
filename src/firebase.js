@@ -17,7 +17,16 @@ require("dotenv").config();
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 
-
+const firebaseApp = firebase.initializeApp({
+  apiKey: "AIzaSyCRg5kUqAMu9_CAfwrVXXoqsEouiSuLa_s",
+  authDomain: "instagram-clone-9eee0.firebaseapp.com",
+  databaseURL: "https://instagram-clone-9eee0.firebaseio.com",
+  projectId: "instagram-clone-9eee0",
+  storageBucket: "instagram-clone-9eee0.appspot.com",
+  messagingSenderId: "218884752036",
+  appId: "1:218884752036:web:19c20e4d37a482ca575c31",
+  measurementId: "G-TQ6DG2VJ9N",
+});
 
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
