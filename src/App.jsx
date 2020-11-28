@@ -90,7 +90,7 @@ function App() {
       .catch((error) => alert(error.message));
     setOpenSignIn(false);
   };
-
+  console.log('g',posts);
   return (
     <div className="App">
       <Modal open={open} onClose={() => setOpen(false)}>
@@ -172,39 +172,38 @@ function App() {
       </div>
       <div className="app__posts">
         <div className="app_postsLeft">
-          {posts.map(({ post, id }) => (
+          {posts.map(({ id, post }) => (
             <Post
               key={id}
               postId={id}
               username={post.username}
+              user={user}
               caption={post.caption}
               imageUrl={post.imageUrl}
             />
           ))}
         </div>
         <div className="app__postsRight">
-
-        <InstagramEmbed
-          url="https://www.instagram.com/p/BTXZEh3A1NkHlglfxJoGIMYBkmjiHjOTR1WUK40/"
-          clientAccessToken="c90c723e16f0fd4dfa2b395a8b37921b|456"
-          maxWidth={320}
-          hideCaption={false}
-          containerTagName="div"
-          protocol=""
-          injectScript
-          onLoading={() => {}}
-          onSuccess={() => {}}
-          onAfterRender={() => {}}
-          onFailure={() => {}}
-        />
+          <InstagramEmbed
+            url="https://www.instagram.com/p/BTXZEh3A1NkHlglfxJoGIMYBkmjiHjOTR1WUK40/"
+            clientAccessToken="195720648787251|abc96dd14a2cad9eb7d7a8eccd5ef331"
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName="div"
+            protocol=""
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
+          />
         </div>
       </div>
-
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
-        <h3>Sorry you need to login to upload</h3>
+        <h3 className='app__loginMessage'>Sorry you need to login to upload</h3>
       )}
     </div>
   );
