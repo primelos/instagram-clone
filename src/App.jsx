@@ -6,8 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
 import ImageUpload from "./components/imageUpload";
-import InstagramEmbed from 'react-instagram-embed'
-
+import InstagramEmbed from "react-instagram-embed";
 
 function getModalStyle() {
   const top = 50;
@@ -40,7 +39,7 @@ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
   const [openSignIn, setOpenSignIn] = useState(false);
 
   useEffect(() => {
@@ -49,7 +48,7 @@ function App() {
         console.log(authUser);
         setUser(authUser);
       } else {
-        setUser(null);
+        setUser("");
       }
     });
     return () => {
@@ -58,13 +57,17 @@ function App() {
   }, [user, username]);
 
   useEffect(() => {
-    db.collection("post").orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
-      console.log(snapshot.docs);
-      setPosts(snapshot.docs.map((doc) => ({ 
-        id: doc.id, 
-        post: doc.data() 
-      })));
-    });
+    db.collection("post")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        console.log(snapshot.docs);
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            post: doc.data(),
+          }))
+        );
+      });
     // return () => {
     //   cleanup
     // }
@@ -90,7 +93,7 @@ function App() {
       .catch((error) => alert(error.message));
     setOpenSignIn(false);
   };
-  console.log('g',posts);
+  console.log("g", posts);
   return (
     <div className="App">
       <Modal open={open} onClose={() => setOpen(false)}>
@@ -200,10 +203,10 @@ function App() {
         </div>
       </div>
 
-      {user?.displayName ? (
+      {user.displayName ? (
         <ImageUpload username={user.displayName} />
       ) : (
-        <h3 className='app__loginMessage'>Sorry you need to login to upload</h3>
+        <h3 className="app__loginMessage">Sorry you need to login to upload</h3>
       )}
     </div>
   );
